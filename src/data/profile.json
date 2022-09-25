@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Email",
+    "value": "mail@yandex.ru",
+    "type": "text"
+  },
+  {
+    "name": "Login",
+    "value": "ivanov",
+    "type": "text"
+  },
+  {
+    "name": "Name",
+    "value": "Иван",
+    "type": "text"
+  },
+  {
+    "name": "Last name",
+    "value": "Иванов",
+    "type": "text"
+  },
+  {
+    "name": "Display name",
+    "value": "Иван",
+    "type": "text"
+  },
+  {
+    "name": "Phone",
+    "value": "+7(909)9673030",
+    "type": "text"
+  }
+]

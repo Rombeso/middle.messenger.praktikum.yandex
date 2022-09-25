@@ -1,0 +1,30 @@
+.backBlock {
+    width: 5%;
+    min-width: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--second-background);
+
+    &__link {
+        display: block;
+        width: 75%;
+        height: 0;
+        padding-bottom: 75%;
+        border-radius: 50%;
+    }
+
+    &__arrow {
+        display: block;
+        width: 28px;
+        background: url('./../assets/back-arrow.svg') no-repeat center center;
+        background-size: cover;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 0 auto;
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}

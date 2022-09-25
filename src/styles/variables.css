@@ -1,0 +1,18 @@
+:root {
+  --first-background: #343A4F;
+  --second-background: #252838;
+  --text: #E2E2E4;
+  --second-text: #9898B0;
+  --blue: #3369F3;
+  --error: #F44D4D;
+  --grey: #4C546F;
+  --font-family: 'Roboto', sans-serif;
+    /*--background-color: #2A2F3F;*/
+    /*--text-color: #fff;*/
+    /*--input-background-color: #1C1F29;*/
+    /*--button-background-color: #8E5BF9;*/
+    /*--input-background-color: #485067;*/
+    /*--box-shadow-pop-up: 0px 1px 5px rgba(255, 255, 255, 0.14);*/
+    /*--link-color: #8E5BF9;*/
+    /*--warning-color: #FF006B;*/
+  }
