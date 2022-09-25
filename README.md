@@ -3,11 +3,14 @@
 
 ### Ссылка на проект
 
-https://
+https://stalwart-pothos-638543.netlify.app/index/index.html
+
+### Ссылка на макет в Figma
+https://www.figma.com/file/wKshIyNiBhdURUseuRv2Qe/My-Messanger?node-id=0%3A1
 
 ### Ссылка на PR
 
-https://
+https://github.com/Rombeso/middle.messenger.praktikum.yandex/pull/1
 
 ### Сборка и запуск
 
