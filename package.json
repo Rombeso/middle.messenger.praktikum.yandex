@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "parcel src/pages/index/index.hbs --no-cache",
     "build": "parcel build ./src/pages/**/*.hbs",
-    "start": "parcel build ./src/pages/**/*.hbs && node ./server.js",
+    "start": "parcel build ./src/pages/index/index.hbs && node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
