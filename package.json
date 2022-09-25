@@ -1,0 +1,33 @@
+{
+  "name": "ya-messenger",
+  "version": "1.0.0",
+  "description": "---",
+  "scripts": {
+    "dev": "parcel src/pages/index/index.hbs --no-cache",
+    "build": "parcel build ./src/pages/**/*.hbs",
+    "start": "npm run build && node ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rombeso/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rombeso/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/Rombeso/middle.messenger.praktikum.yandex#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "express": "^4.18.1",
+    "parcel": "^2.7.0",
+    "postcss": "^8.4.16",
+    "postcss-import": "^15.0.0",
+    "postcss-nested": "^5.0.6"
+  }
+}
