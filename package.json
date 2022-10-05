@@ -24,10 +24,19 @@
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-unicorn": "^44.0.1",
     "express": "^4.18.1",
     "parcel": "^2.7.0",
     "postcss": "^8.4.16",
     "postcss-import": "^15.0.0",
-    "postcss-nested": "^5.0.6"
+    "postcss-nested": "^5.0.6",
+    "stylelint": "^14.13.0"
   }
 }
