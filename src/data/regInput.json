@@ -1,0 +1,8 @@
+[
+  {"type": "email", "text": "Email"},
+  {"type": "text", "text": "Login"},
+  {"type": "text", "text": "Name"},
+  {"type": "text", "text": "Last name"},
+  {"type": "tel", "text": "Phone"},
+  {"type": "password", "text": "Password"}
+]

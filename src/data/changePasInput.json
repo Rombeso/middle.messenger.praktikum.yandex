@@ -1,0 +1,5 @@
+[
+  {"type": "password", "name": "Current password", "value": ""},
+  {"type": "password", "name": "New password", "value": ""},
+  {"type": "password", "name": "Repeat new password", "value": ""}
+]

@@ -1,0 +1,22 @@
+{{!< main}}
+
+<main class='main'>
+    <section class='left'>
+        <div class='topList'>
+            <a class='topList__goto-profile' href='/'>Profile&emsp;></a>
+            {{> 'inputSearch/inputSearch'}}
+        </div>
+
+        <div class='chatList'>
+            {{#each chat}}
+                {{> 'chatItem/chatItem' this}}
+            {{/each}}
+        </div>
+    </section>
+
+    <section class='right'>
+        <h2>Выберите чат чтобы отправить сообщение</h2>
+    </section>
+    <a href="../index/index.hbs" class="backLink">Вернуться назад</a>
+</main>
+
