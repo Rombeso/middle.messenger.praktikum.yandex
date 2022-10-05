@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Rombeso/middle.messenger.praktikum.yandex#readme",
   "engines": {
-    "node": ">=12.0.0"
+    "node": "16.15.0"
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
