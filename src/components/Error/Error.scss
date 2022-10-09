@@ -1,0 +1,8 @@
+@import '../../styles/variables.scss';
+.error {
+  font-size: 11px;
+  color: $error;
+  height: 12px;
+  position: absolute;
+  bottom: -15px;
+}

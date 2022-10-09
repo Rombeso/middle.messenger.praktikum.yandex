@@ -3,17 +3,24 @@
   "version": "1.0.0",
   "description": "---",
   "scripts": {
-    "dev": "parcel src/pages/index/index.hbs --no-cache",
+    "dev": "parcel src/index.html --no-cache",
     "build": "parcel build ./src/pages/**/*.hbs",
-    "start": "parcel build ./src/pages/index/index.hbs && node ./server.js",
+    "start": "parcel build src/pages/first/first.ts && node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rombeso/middle.messenger.praktikum.yandex.git"
   },
+  "alias": {
+    "core": "./src/core",
+    "components": "./src/components",
+    "pages": "./src/pages",
+    "helpers": "./src/helpers",
+    "data": "./src/data"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Roman Larionov",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Rombeso/middle.messenger.praktikum.yandex/issues"
@@ -24,19 +31,32 @@
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@babel/core": "^7.19.3",
+    "@types/node": "^18.8.3",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
     "eslint": "^8.24.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unicorn": "^44.0.1",
     "express": "^4.18.1",
     "parcel": "^2.7.0",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
     "postcss": "^8.4.16",
-    "postcss-import": "^15.0.0",
+    "postcss-import": "^12.0.1",
     "postcss-nested": "^5.0.6",
-    "stylelint": "^14.13.0"
+    "stylelint": "^14.13.0",
+    "typescript": "^4.8.4",
+    "@parcel/transformer-sass": "^2.7.0",
+    "sass": "^1.55.0"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "nanoid": "^4.0.0",
+    "sass": "^1.55.0",
+    "stylelint-scss": "^4.3.0"
   }
 }

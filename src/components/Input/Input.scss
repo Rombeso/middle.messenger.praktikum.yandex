@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.input {
+  border: none;
+  border-radius: 5px;
+  background: $second-background;
+  width: 100%;
+  height: 33px;
+  padding: 1rem;
+  font-size: 13px;
+  margin-top: 1rem;
+  outline: transparent;
+
+  &:hover, &:focus {
+    opacity: 0.6;
+  }
+}
