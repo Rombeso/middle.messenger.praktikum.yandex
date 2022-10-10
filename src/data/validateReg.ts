@@ -12,7 +12,7 @@ export const LATIN_LETTERS = /[a-zA-z]+/;
 
 export const ONE_DIGIT = /[0-9]+/;
 
-export const NO_DIGITS = /[a-zA-Z\(\)\ -]/;
+export const NO_DIGITS = /[^a-z ]\ *([-0-9])*\d/;
 
 export const ALL_DIGITS = /^\d+$/;
 

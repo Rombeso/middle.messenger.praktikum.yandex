@@ -1,0 +1,72 @@
+@import '../../styles/variables.scss';
+
+.user {
+  width: 510px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  row-gap: 6rem;
+
+  &__avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+    position: relative;
+  }
+
+  &__image {
+    width: 130px;
+    height: 130px;
+  }
+
+  &__change {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    background-color: $second-background;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 50%;
+    padding: 2rem;
+
+    &:hover {
+      transition: all 0.4s ease-in-out;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+
+  &__data,
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .actionItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid $grey;
+
+    &__title {
+      font-size: 13px;
+      color: $blue;
+      font-weight: 500;
+
+      &_warning {
+        color: $error;
+      }
+    }
+  }
+}

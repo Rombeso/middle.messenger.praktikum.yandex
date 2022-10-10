@@ -15,13 +15,13 @@ import {
 export enum ValidateType {
   Login = 'login',
   Password = 'password',
-  FirstName = 'first_name',
-  SecondName = 'second_name',
-  Attach = 'attach',
-  Message = 'message',
+  FirstName = 'firstname',
+  LastName = 'lastname',
   File = 'file',
   Email = 'email',
   Phone = 'phone',
+  Attach = 'attach',
+  Message = 'message',
 }
 
 export type ValidateRule = {
@@ -38,32 +38,32 @@ export const validateForm = (rulesArray: ValidateRule[]) => {
     switch (type) {
       case ValidateType.Login:
         if (!value.length) {
-          errors[type] = 'Login can not be empty';
+          errors[type] = 'Login не может быть пустым';
           return;
         }
 
         if (value.match(ALL_DIGITS)) {
-          errors[type] = 'Login should use at least one letter';
+          errors[type] = 'Login должен содержать хотя бы одну букву';
           return;
         }
 
         if (value.length > 20 || value.length < 3) {
-          errors[type] = 'Login must contain from 3 to 20 symbols';
+          errors[type] = 'Login должен состоять из 3 до 20 символов';
           return;
         }
 
         if (!value.match(LATIN_LETTERS)) {
-          errors[type] = 'Login should use only latin letters';
+          errors[type] = 'В login используются только латинские буквы ';
           return;
         }
 
         if (value.match(SPECIAL_CHARACTERS)) {
-          errors[type] = 'Login should not contain special symbols';
+          errors[type] = 'Login не должен содержать специальные символы';
           return;
         }
 
         if (!value.match(ONE_SPACE_SYMBOL)) {
-          errors[type] = 'Login should not contain space symbols';
+          errors[type] = 'Login не должен содержать специальные символы';
           return;
         }
 
@@ -71,22 +71,22 @@ export const validateForm = (rulesArray: ValidateRule[]) => {
 
       case ValidateType.Password:
         if (!value.length) {
-          errors[type] = 'Password can not be empty';
+          errors[type] = 'Password не может быть пустым';
           return;
         }
 
         if (!value.match(ONE_CAPITAL_LETTER)) {
-          errors[type] = 'Password must contain one capital letter at least';
+          errors[type] = 'Password должен содержать хотя бы одну большую букву';
           return;
         }
 
         if (value.length > 40 || value.length < 8) {
-          errors[type] = 'Password must contain from 8 to 40 symbols';
+          errors[type] = 'Password должен состоять из 8 до 40 символов';
           return;
         }
 
         if (!value.match(ONE_DIGIT)) {
-          errors[type] = 'Password must contain one digit at least';
+          errors[type] = 'Password должен содержать хотя бы одноу цифру';
           return;
         }
 
@@ -94,12 +94,12 @@ export const validateForm = (rulesArray: ValidateRule[]) => {
 
       case ValidateType.Email:
         if (!value.length) {
-          errors[type] = 'Email can not be empty';
+          errors[type] = 'Email не может быть пустым';
           return;
         }
 
         if (!value.match(EMAIL)) {
-          errors[type] = 'Invalid e-mail address';
+          errors[type] = 'Некорректный e-mail';
           return;
         }
 
@@ -107,17 +107,16 @@ export const validateForm = (rulesArray: ValidateRule[]) => {
 
       case ValidateType.Phone:
         if (!value.length) {
-          errors[type] = 'Phone can not be empty';
+          errors[type] = 'Phone не может быть пустым';
           return;
         }
-
         if (!value.match(PHONE)) {
-          errors[type] = 'Invalid phone number';
+          errors[type] = 'Некорректный phone';
           return;
         }
 
         if (!value.match(NO_DIGITS)) {
-          errors[type] = 'Phone number must not contain letters';
+          errors[type] = 'Phone number не должен содержать буквы';
           return;
         }
 
@@ -125,35 +124,35 @@ export const validateForm = (rulesArray: ValidateRule[]) => {
 
       case ValidateType.FirstName:
         if (!value.length) {
-          errors[type] = 'Name can not be empty';
+          errors[type] = 'Name не может быть пустым';
           return;
         }
 
         if (!value.match(ONLY_LETTERS_AND_DASH)) {
-          errors[type] = 'Name must contain only letters and dash';
+          errors[type] = 'Name может содержать только буквы и тире';
           return;
         }
 
         if (!value.match(FIRST_CAPITAL_LETTER)) {
-          errors[type] = 'Name should begin with a capital letter';
+          errors[type] = 'Name должен начинаться с большой буквы';
           return;
         }
 
         break;
 
-      case ValidateType.SecondName:
+      case ValidateType.LastName:
         if (!value.length) {
-          errors[type] = 'Name can not be empty';
+          errors[type] = 'Second Name не может быть пустым';
           return;
         }
 
         if (!value.match(ONLY_LETTERS_AND_DASH)) {
-          errors[type] = 'Name must contain only letters and dash';
+          errors[type] = 'Second Name может содержать только буквы и тире';
           return;
         }
 
         if (!value.match(FIRST_CAPITAL_LETTER)) {
-          errors[type] = 'Name should begin with a capital letter';
+          errors[type] = 'Last Name должен начинаться с большой буквы';
           return;
         }
 
@@ -161,14 +160,14 @@ export const validateForm = (rulesArray: ValidateRule[]) => {
 
       case ValidateType.Message:
         if (!value.length) {
-          errors[type] = 'Your message is empty';
+          errors[type] = 'Ваше сообщение не может быть пустым';
           return;
         }
 
         break;
 
       default:
-        errors[type] = 'Unknown error';
+        errors[type] = 'Неопределенная ошибка';
     }
   });
 
