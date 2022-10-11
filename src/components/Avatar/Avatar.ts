@@ -26,7 +26,7 @@ export default class Avatar extends Block<AvatarProps> {
         {{{Link class='avatar__change' path='./changeUserAvatar' text='Change avatar'}}}
       {{/if}}
 			
-			<img src="{{imageSrc}}" class="user__image" alt="avatar" />
+			<img src="{{imageSrc}}" class="avatar__image" alt="avatar" />
             
 			<h3>{{name}}</h3>
 		</div>

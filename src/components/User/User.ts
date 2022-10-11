@@ -1,32 +1,27 @@
 import Block from 'core/Block';
 import { ProfileProps } from 'pages/profile/profile';
 import './User.scss';
+// @ts-ignore
+import avatar from '../../assets/default-avatar.png';
 
 export default class User extends Block<Partial<ProfileProps>> {
   static componentName: string = 'User';
 
-  constructor({ userData }: ProfileProps) {
-    super({ userData });
+  constructor({ profileData }: ProfileProps) {
+    super({ profileData });
   }
 
   render() {
     // language=hbs
     return `
     <div class='user'>
-    <div class='user__avatar'>
-        <a class='user__change' href='/'>Change avatar</a>
-        <img
-                src='./../../assets/default-avatar.png'
-                alt='avatar'
-                class='user__image'
-        />
-
-        <h3>Name</h3>
-    </div>
+        {{{Avatar name="Vadim" imageSrc="${avatar}" isEditable=true}}}
 
     <div class='user__data'>
-        {{#each profile}}
+        {{#each profileData}}
+            {{#with this}}
             {{{ProfileItem name="{{name}}" data="{{data}}"}}}
+            {{/with}}
         {{/each}}
     </div>
 

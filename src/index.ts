@@ -17,7 +17,7 @@ import ErrorMessage from 'components/Error/Error';
 import ReturnButton from 'components/ReturnButton/ReturnButton';
 // import ChatMessage from 'components/ChatMessage/ChatMessage';
 // import MessageInput from 'components/MessageInput/MessageInput';
-// import Avatar from 'components/Avatar/Avatar';
+import Avatar from 'components/Avatar/Avatar';
 import { regInputs } from 'data/regInputs';
 // import { chats } from './data/chats';
 import { profileData } from 'data/profileData';
@@ -45,7 +45,7 @@ registerComponent(ErrorMessage);
 registerComponent(ReturnButton);
 // registerComponent(ChatMessage);
 // registerComponent(MessageInput);
-// registerComponent(Avatar);
+registerComponent(Avatar);
 type PagesMap = { [key: string]: any };
 
 const currentLocation: string = window.location.pathname;
@@ -55,7 +55,7 @@ const pagesMap: PagesMap = {
   '/login': [LoginPage, null],
   '/signUp': [SignupPage, { regInputs }],
   // '/main': [MainPage, { chats }],
-  '/profile': [Profile, { profile: profileData }],
+  '/profile': [Profile, { profileData }],
   // '/changeProfile': [changeProfile, { profileData }],
   // '/changeUserPassword': [ChangeUserPassword, null],
   // '/changeUserAvatar': [ChangeUserAvatar, null],

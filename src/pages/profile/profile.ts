@@ -8,17 +8,17 @@ export interface UserProps {
 }
 
 export interface ProfileProps {
-  profile: UserProps[];
+  profileData: UserProps[];
   onClick: () => void;
 }
 
 export default class Profile extends Block<ProfileProps> {
   static componentName: string = 'Profile';
 
-  constructor({ profile }: ProfileProps) {
+  constructor({ profileData }: ProfileProps) {
     super();
     this.setProps({
-      profile,
+      profileData,
       onClick: () => {
         window.location.pathname = '/';
       },
@@ -33,7 +33,7 @@ export default class Profile extends Block<ProfileProps> {
       {{{ReturnButton onClick=onClick}}}
 
     <section class='profile__container'>
-        {{{User profile=this.props }}}
+        {{{User profileData=profileData }}}
     </section>
   </div>
   <a href="./" class="backLink">Вернуться назад</a>

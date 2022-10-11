@@ -1,16 +1,16 @@
 import Block from 'core/Block';
 import './ProfileItem.scss';
 
-export interface ProfileItemProps {
+export interface ProfileDataItemProps {
   name: string;
   data: string;
   type: string;
 }
 
-export default class ProfileItem extends Block<ProfileItemProps> {
-  static componentName: string = 'UserDataItem';
+export default class ProfileItem extends Block<ProfileDataItemProps> {
+  static componentName: string = 'ProfileItem';
 
-  constructor(props: ProfileItemProps) {
+  constructor(props: ProfileDataItemProps) {
     super(props);
   }
 
@@ -19,7 +19,7 @@ export default class ProfileItem extends Block<ProfileItemProps> {
     return `
         <div class='dataItem'>
     <div class='dataItem__title'>{{name}}</div>
-    <div class='dataItem__content'>{{value}}</div>
+    <div class='dataItem__content'>{{data}}</div>
 </div>
               `;
   }
