@@ -3,24 +3,26 @@ import 'components/User/User.scss';
 import 'pages/profile/profile.scss';
 // import 'pages/start/start.scss';
 import { ProfileProps } from '../profile/profile';
-//import { refsObject } from 'pages/changeUserPassword/changeUserPassword';
+import { RefsObject } from 'pages/changePassword/changePassword';
 import { validateForm, ValidateType } from 'helpers/validateForm';
 import InputData from 'components/InputData/InputData';
+// @ts-ignore
+import avatar from '../../assets/default-avatar.png';
 
 export type ChangeProfileProps = ProfileProps & {
   onSubmit: (event: SubmitEvent) => void;
 };
 
-type changeUserPasswordRefs = {
+type ChangeUserPasswordRefs = {
   [key: string]: InputData;
 };
 
-export default class ChangeUserData extends Block<ChangeProfileProps, changeUserPasswordRefs> {
+export default class ChangeProfile extends Block<ChangeProfileProps, ChangeUserPasswordRefs> {
   static componentName: string = 'ChangeUserData';
 
-  constructor({ userData }: ProfileProps) {
+  constructor({ profileData }: ProfileProps) {
     super({
-      userData,
+      profileData,
       onClick: () => {
         window.location.pathname = './profileData';
       },
@@ -29,7 +31,7 @@ export default class ChangeUserData extends Block<ChangeProfileProps, changeUser
         const refs = Object.entries(this.refs).reduce((acc, [key, value]) => {
           acc[key] = value.getRefs()[key].getContent() as HTMLInputElement;
           return acc;
-        }, {} as refsObject);
+        }, {} as RefsObject);
 
         const errors = Object.entries(refs).reduce((acc, [key, input]) => {
           const errorMessage = validateForm([
@@ -68,39 +70,30 @@ export default class ChangeUserData extends Block<ChangeProfileProps, changeUser
   render() {
     // language=hbs
     return `
-<main class='main'>
-    <div class='profile'>
-        {{> profileReturnButton/profileReturnButton path=""}}
+        <main class='main'>
+            <div class='profile'>
+                {{{ReturnButton class="arrow" onClick=onClick}}}
 
-        <section class='profile__container'>
-            <form class='user' action="/">
-                <div class='user__avatar'>
-                    <img
-                            src='./../../assets/default-avatar.png'
-                            alt='avatar'
-                            class='user__image'
-                    />
-                </div>
+                <section class='profile__container'>
+                    <form class='user' action="/">
+                        {{{Avatar name="Oleg" imageSrc="${avatar}" isEditable=false}}}
 
-                <div class='user__data'>
-                    {{#each profile}}
-                        {{#with this}}
-                            {{{InputData ref=title childRef=title title=title data=data type=type inputName=title}}}
-                        {{/with}}
-                    {{/each}}
-                    {{#each profile}}
-                        {{> 'inputItem/inputItem' this}}
-                    {{/each}}
-                </div>
+                        <div class='user__data'>
+                            {{#each profileData}}
+                                {{#with this}}
+                                    {{{InputData ref=name childRef=name name=name data=data type=type inputName=name}}}
+                                {{/with}}
+                            {{/each}}
+                        </div>
 
-                <div class="loginForm__bottom">
-                    {{> 'button/button' button-title='Save' button-class='button'}}
-                </div>
-            </form>
-        </section>
-    </div>
-    <a href="../first/first.ts" class="backLink">Вернуться назад</a>
-</main>
-              `;
+                        <div class="loginForm__bottom">
+                            {{{ Button title='Save' class='button' onClick=onSubmit}}}
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <a href="./" class="backLink">Вернуться назад</a>
+        </main>
+    `;
   }
 }

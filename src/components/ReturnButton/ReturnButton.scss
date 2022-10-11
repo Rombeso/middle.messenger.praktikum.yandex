@@ -7,6 +7,9 @@
   align-items: center;
   justify-content: center;
   background-color: $second-background;
+  .buttonReverse {
+    transform: rotate(180deg);
+  }
 
   &__link {
     display: block;
@@ -17,6 +20,9 @@
     background: url('../../assets/back-arrow.svg') no-repeat center center;
     &:hover {
       opacity: 0.6;
+    }
+    .buttonReverse {
+      transform: rotate(180deg);
     }
   }
 }

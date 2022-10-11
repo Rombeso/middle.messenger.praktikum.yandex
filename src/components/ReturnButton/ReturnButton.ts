@@ -3,11 +3,13 @@ import './ReturnButton.scss';
 
 interface IncomingReturnButtonProps {
   path: string;
+  class?: string;
   onClick?: () => void;
 }
 
 interface ReturnButtonProps {
   path: string;
+  class?: string;
   events: {
     click?: () => void;
   };
@@ -16,8 +18,8 @@ interface ReturnButtonProps {
 export default class ReturnButtonButton extends Block<ReturnButtonProps> {
   static componentName: string = 'ReturnButton';
 
-  constructor({ path, onClick }: IncomingReturnButtonProps) {
-    super({ path, events: { click: onClick } });
+  constructor({ path, class: string = 'backBlock__link', onClick }: IncomingReturnButtonProps) {
+    super({ path, class: string, events: { click: onClick } });
   }
 
   render() {
@@ -25,7 +27,7 @@ export default class ReturnButtonButton extends Block<ReturnButtonProps> {
     return `
 
 <div class='backBlock'>
-<button  class='backBlock__link' onClick={{onClick}}>
+<button  class='{{class}}' onClick={{onClick}}>
   </button>
   </div>
       `;

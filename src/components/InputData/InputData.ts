@@ -1,11 +1,11 @@
 import Block from 'core/Block';
-import { ProfileItemProps } from 'components/ProfileItem/ProfileItem';
+import { ProfileDataItemProps } from 'components/ProfileItem/ProfileItem';
 import Input from 'components/Input/Input';
 import './InputData.scss';
 import ErrorMessage from 'components/Error/Error';
 import { validateForm, ValidateType } from 'helpers/validateForm';
 
-type IncomingInputDataProps = ProfileItemProps & {
+type IncomingInputDataProps = ProfileDataItemProps & {
   childRef: string;
   inputName: string;
   error?: string;

@@ -1,11 +1,14 @@
+@import '../../styles/variables.scss';
+
 .error {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     row-gap: 20px;
+    position: static;
 
     &__title {
         font-weight: 500;
@@ -20,7 +23,7 @@
     &__link {
         font-weight: 500;
         font-size: 11px;
-        color: var(--blue);
+        color: $blue;
         margin-top: 50px;
     }
 }
