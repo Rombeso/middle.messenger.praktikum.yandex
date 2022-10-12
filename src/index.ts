@@ -1,7 +1,7 @@
 require('babel-core/register');
 
 import { renderDOM, registerComponent } from './core';
-import './styles/style.scss';
+import 'styles/style.scss';
 import Button from 'components/Button/Button';
 import Link from 'components/Link/Link';
 import Input from 'components/Input/Input';
@@ -45,6 +45,7 @@ registerComponent(ReturnButton);
 registerComponent(ChatMessage);
 registerComponent(InputMessage);
 registerComponent(Avatar);
+
 type PagesMap = { [key: string]: any };
 
 const currentLocation: string = window.location.pathname;

@@ -2,13 +2,11 @@
   "plugins": [
     "@typescript-eslint",
     "prettier",
-//    "unicorn" ,
  "import"
   ],
   "extends": [
     "airbnb-typescript/base",
     "plugin:@typescript-eslint/recommended",
-//    "plugin:unicorn/recommended",
     "plugin:import/recommended",
     "plugin:prettier/recommended",
     "prettier"
