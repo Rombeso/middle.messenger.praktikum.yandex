@@ -10,7 +10,7 @@ https://www.figma.com/file/wKshIyNiBhdURUseuRv2Qe/My-Messanger?node-id=0%3A1
 
 ### Ссылка на PR
 
-https://github.com/Rombeso/middle.messenger.praktikum.yandex/pull/1
+https://github.com/Rombeso/middle.messenger.praktikum.yandex/pull/2
 
 ### Сборка и запуск
 
@@ -31,6 +31,24 @@ npm run start
 ```bash
 npm run dev
 ```
+
+### Описание
+
+**Спринт 1**
+
+Свёрстан макет приложения чат в Figma с использованием шаблонизатора Handlebars. Ссылка на макет
+Настроена сборка с использованием Parcel и раздача статики сервером на Express
+Приложение автоматически деплоится на Netlify из ветки deploy. Ссылка на приложение
+
+**Спринт 2**
+
+Переход на TypeScript
+Реализация шины событий (core/EventBus.ts)
+Реализация компонента (core/Block.ts) с собственными пропсами, жизненным циклом и реактивным ререндером при изменении пропсов (использованы Proxy)
+Приложение переписано с учётом новых компонентов
+На основных формах реализована клиентская валидация
+Реализация аналога fetch для запросов к серверу (utils/core/HTTPTransport.ts)
+
 
 ### Технологии
 

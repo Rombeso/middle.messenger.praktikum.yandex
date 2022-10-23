@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+.backBlock {
+  width: 5%;
+  min-width: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $second-background;
+  .buttonReverse {
+    transform: rotate(180deg);
+  }
+
+  &__link {
+    display: block;
+    width: 75%;
+    height: 0;
+    padding-bottom: 75%;
+    border-radius: 50%;
+    background: url('../../assets/back-arrow.svg') no-repeat center center;
+    &:hover {
+      opacity: 0.6;
+    }
+    .buttonReverse {
+      transform: rotate(180deg);
+    }
+  }
+}

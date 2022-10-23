@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+.main {
+    background: $second-background;
+}
+
+.loginForm {
+    width: 340px;
+    min-height:450px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: $first-background;
+    border-radius: 12px;
+    row-gap: 40px;
+    padding: 40px 20px 30px;
+    margin: auto;
+
+    &__block {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        row-gap: 20px;
+        padding: 10px 0;
+    }
+
+    &__bottom {
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        row-gap: 20px;
+        padding: 10px 0;
+    }
+}
+
+
