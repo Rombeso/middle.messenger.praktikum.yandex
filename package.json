@@ -18,7 +18,8 @@
     "pages": "./src/pages",
     "helpers": "./src/helpers",
     "data": "./src/data",
-    "styles": "./src/styles"
+    "styles": "./src/styles",
+    "services": "./src/services"
   },
   "keywords": [],
   "author": "Roman Larionov",
@@ -51,6 +52,8 @@
   },
   "dependencies": {
     "babel-core": "^6.26.3",
+    "handlebars": "4.7.7",
+    "nanoid": "4.0.0",
     "stylelint-scss": "^4.3.0"
   },
   "targets": {
