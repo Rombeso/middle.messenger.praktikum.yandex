@@ -20,7 +20,7 @@ import Avatar from 'components/Avatar/Avatar';
 // import { regInputs } from 'data/regInputs';
 // import { chat } from './data/chat';
 // import { profileData } from 'data/profileData';
-import FirstPage from 'pages/first/first';
+// import FirstPage from 'pages/first/first';
 // import SignupPage from 'pages/signUp/singUp';
 // import LoginPage from 'pages/login/login';
 // import ChatsPage from 'pages/chats/chats';
@@ -57,32 +57,12 @@ declare global {
   }
 }
 
-// type PagesMap = { [key: string]: any };
-//
-// const currentLocation: string = window.location.pathname;
-//
-// const pagesMap: PagesMap = {
-//   '/': [FirstPage, null],
-//   '/login': [LoginPage, null],
-//   '/signUp': [SignupPage, { regInputs }],
-//   '/chats': [ChatsPage, { chat }],
-//   '/profile': [Profile, { profileData }],
-//   '/changeProfile': [ChangeProfile, { profileData }],
-//   '/changePassword': [ChangePassword, null],
-//   '/404': [Error404Page, null],
-//   '/500': [Error500Page, null],
-//   '/changeAvatar': [ChangeAvatar, null],
-// };
-
-// const [pageToRender, props] = pagesMap[currentLocation];
-
 document.addEventListener('DOMContentLoaded', () => {
-  // renderDOM(new pageToRender(props));
   const router = new Router();
   window.router = router;
   window.store = store;
 
-  renderDOM(new FirstPage());
+  // renderDOM(new FirstPage());
   initRouter(router);
   router.start();
 });

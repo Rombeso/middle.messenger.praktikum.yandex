@@ -1,70 +1,65 @@
+import queryStringify from 'helpers/queryStringify';
+
 enum METHODS {
-    GET = 'GET',
-    POST = 'POST',
-    PUT = 'PUT',
-    DELETE = 'DELETE',
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
 }
 
 type Options = {
-    method: METHODS;
-    timeout?: number;
-    data?: { [key: string]: string };
-    headers?: { [key: string]: string };
+  timeout?: number;
+  data?: Record<string, any>;
+  headers?: Record<string, string>;
 };
 
-class HTTPTransport {
-    get = (url: string, options: Options = { method: METHODS.GET }) => {
-        const urlWithParams = options.data ? url + queryStringify(options.data) : url;
+export default class HTTPTransport {
+  get = (url: string, queryParams?: Record<string, string>) => {
+    const urlWithParams = queryParams ? url + queryStringify(queryParams) : url;
 
-        return this.request(urlWithParams, { ...options, method: METHODS.GET }, options.timeout);
-    };
+    return this.request(urlWithParams, METHODS.GET);
+  };
 
-    post = (url: string, options: Options = { method: METHODS.POST }) => {
-        return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
-    };
+  post = (url: string, options?: Options) => {
+    return this.request(url, METHODS.POST, options?.data);
+  };
 
-    put = (url: string, options: Options = { method: METHODS.PUT }) => {
-        return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
-    };
+  put = (url: string, options: Options) => {
+    return this.request(url, METHODS.PUT, options.data);
+  };
 
-    delete = (url: string, options: Options = { method: METHODS.DELETE }) => {
-        return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
-    };
+  delete = (url: string) => {
+    return this.request(url, METHODS.DELETE);
+  };
 
-    request = (
-        url: string,
-        options: Options = { method: METHODS.GET },
-        timeout = 5000
-    ): Promise<XMLHttpRequest> => {
-        const { method, data, headers = {} } = options;
+  request = <T extends any>(
+    url: string,
+    method: METHODS,
+    data?: Record<string, string>,
+    timeout = 5000
+  ): Promise<T> => {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
 
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+      xhr.responseType = 'json';
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = timeout;
+      xhr.withCredentials = true;
 
-            xhr.open(method, url);
-            xhr.responseType = 'json';
+      xhr.onload = () => {
+        resolve(xhr.response);
+      };
 
-            const headersEntries = Object.entries(headers);
+      xhr.onerror = reject;
+      xhr.onabort = reject;
+      xhr.ontimeout = reject;
 
-            headersEntries.forEach((item) => {
-                xhr.setRequestHeader(item[0], item[1]);
-            });
-
-            xhr.timeout = timeout;
-
-            xhr.onload = () => {
-                resolve(xhr.response);
-            };
-
-            xhr.onerror = reject;
-            xhr.onabort = reject;
-            xhr.ontimeout = reject;
-
-            if (method === METHODS.GET || !data) {
-                xhr.send();
-            } else {
-                xhr.send(JSON.stringify(data));
-            }
-        });
-    };
+      if (method === METHODS.GET || !data) {
+        xhr.send();
+      } else {
+        xhr.send(JSON.stringify(data));
+      }
+    });
+  };
 }
