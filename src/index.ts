@@ -20,7 +20,7 @@ import Avatar from 'components/Avatar/Avatar';
 // import { regInputs } from 'data/regInputs';
 // import { chat } from './data/chat';
 // import { profileData } from 'data/profileData';
-// import FirstPage from 'pages/first/first';
+import FirstPage from 'pages/first/first';
 // import SignupPage from 'pages/signUp/singUp';
 // import LoginPage from 'pages/login/login';
 // import ChatsPage from 'pages/chats/chats';
@@ -62,7 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
   window.router = router;
   window.store = store;
 
-  // renderDOM(new FirstPage());
-  initRouter(router);
-  router.start();
+  renderDOM(new FirstPage({ router }));
+
+  store.on('updated', (prevState, nextState) => {
+    if (process.env.DEBUG) {
+      console.log('%cstore updated', 'background: #222; color: #bada55', nextState);
+    }
+  });
+
+  initRouter(router, store);
 });

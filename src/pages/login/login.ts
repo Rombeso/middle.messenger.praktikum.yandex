@@ -2,8 +2,11 @@ import Block from 'core/Block';
 import { validateForm, ValidateType } from 'helpers/validateForm';
 import './login.scss';
 import ControlledInput from 'components/ControlledInput/ControlledInput';
+import { WithRouter } from 'components/Hocs/WithRouter';
+import Router from 'core/Router';
 
 type IncomingSigninProps = {
+  router: Router;
   inputs: Array<{ text: string; type: string }>;
 };
 
@@ -24,7 +27,7 @@ interface SubmitEvent extends Event {
 export type RefsObject = {
   [key: string]: HTMLInputElement;
 };
-export default class SigninPage extends Block<SigninProps, SigninRefs> {
+class SigninPage extends Block<SigninProps, SigninRefs> {
   static componentName = 'SigninPage';
 
   constructor() {
@@ -117,3 +120,5 @@ export default class SigninPage extends Block<SigninProps, SigninRefs> {
 `;
   }
 }
+
+export default WithRouter(SigninPage);
