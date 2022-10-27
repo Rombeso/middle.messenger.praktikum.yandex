@@ -33,6 +33,10 @@ import FirstPage from 'pages/first/first';
 import Router from 'core/Router';
 import { initRouter } from 'services/initRouter';
 import store, { Store } from './store/store';
+import { start } from 'helpers/start';
+import CreateChatForm from 'components/CreateChatForm/CreateChatForm';
+import AddUserToChatForm from 'components/AddUserToChatForm/AddUserToChatForm';
+import ChatMenu from 'components/ChatMenu/ChatMenu';
 
 registerComponent(Button);
 registerComponent(Link);
@@ -49,6 +53,9 @@ registerComponent(ReturnButton);
 registerComponent(ChatMessage);
 registerComponent(InputMessage);
 registerComponent(Avatar);
+registerComponent(CreateChatForm);
+registerComponent(AddUserToChatForm);
+registerComponent(ChatMenu);
 
 declare global {
   interface Window {
@@ -62,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.router = router;
   window.store = store;
 
+  console.log(router);
+
   renderDOM(new FirstPage({ router }));
 
   store.on('updated', (prevState, nextState) => {
@@ -71,4 +80,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   initRouter(router, store);
+  store.dispatch(start);
 });

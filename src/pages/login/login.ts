@@ -14,6 +14,7 @@ type SigninProps = IncomingSigninProps & {
   onSubmit: (event: SubmitEvent) => void;
   onInput: (event: FocusEvent) => void;
   onFocus: (event: FocusEvent) => void;
+  navigateToSignup: () => void;
 };
 
 type SigninRefs = {
@@ -30,8 +31,8 @@ export type RefsObject = {
 class SigninPage extends Block<SigninProps, SigninRefs> {
   static componentName = 'SigninPage';
 
-  constructor() {
-    super();
+  constructor(props?: SigninProps) {
+    super(props);
 
     this.setProps({
       onSubmit: () => {

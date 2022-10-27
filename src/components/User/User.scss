@@ -8,13 +8,17 @@
   align-items: center;
   justify-content: space-evenly;
   row-gap: 6rem;
-
+  &__image {
+    width: 130px;
+    height: 130px;
+  }
   &__data,
   &__actions {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    row-gap: 1rem;
   }
 
   .actionItem {

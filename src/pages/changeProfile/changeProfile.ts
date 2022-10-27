@@ -1,15 +1,22 @@
 import Block from 'core/Block';
 import 'components/User/User.scss';
 import 'pages/profile/profile.scss';
-// import 'pages/start/start.scss';
+import 'pages/start/start.scss';
 import { ProfileProps } from '../profile/profile';
-import { RefsObject } from 'pages/changePassword/changePassword';
-import { validateForm, ValidateType } from 'helpers/validateForm';
 import InputData from 'components/InputData/InputData';
+import { getChildInputRefs } from 'helpers/getChildInputRefs';
+import { getErrorsObject } from 'helpers/getErrorsObject';
+import { setChildErrorsProps } from 'helpers/setChildErrorsProps';
+import { WithUser } from 'components/Hocs/WithUser';
+import { WithRouter } from 'components/Hocs/WithRouter';
+import { getUserDataArray } from 'helpers/getUserDataArray';
+import { changeUserProfile } from 'services/userData';
+import { WithStore } from 'components/Hocs/WithStore';
 // @ts-ignore
 import avatar from '../../assets/default-avatar.png';
 
 export type ChangeProfileProps = ProfileProps & {
+  userData: Array<any>;
   onSubmit: (event: SubmitEvent) => void;
 };
 
@@ -17,52 +24,35 @@ type ChangeUserPasswordRefs = {
   [key: string]: InputData;
 };
 
-export default class ChangeProfile extends Block<ChangeProfileProps, ChangeUserPasswordRefs> {
+class ChangeProfile extends Block<ChangeProfileProps, ChangeUserPasswordRefs> {
   static componentName: string = 'ChangeUserData';
 
-  constructor({ profileData }: ProfileProps) {
-    super({
-      profileData,
-      onClick: () => {
-        window.location.pathname = './profileData';
-      },
+  constructor(props: ChangeProfileProps) {
+    super(props);
 
-      onSubmit: () => {
-        const refs = Object.entries(this.refs).reduce((acc, [key, value]) => {
-          acc[key] = value.getRefs()[key].getContent() as HTMLInputElement;
-          return acc;
-        }, {} as RefsObject);
+    const data = props.user ? getUserDataArray(props.user) : [];
 
-        const errors = Object.entries(refs).reduce((acc, [key, input]) => {
-          const errorMessage = validateForm([
-            { type: key.toLowerCase() as ValidateType, value: input.value },
-          ])[key.toLowerCase()];
+    this.setProps({
+      userData: data,
 
-          if (errorMessage) {
-            acc[key] = errorMessage;
-          }
+      onSubmit: async () => {
+        const refs = getChildInputRefs(this.refs);
+        const errors = getErrorsObject(refs);
 
-          return acc;
-        }, {} as { [key: string]: string });
+        setChildErrorsProps(errors, this.refs);
 
-        if (Object.entries(errors).length !== 0) {
-          Object.entries(errors).forEach(([key, value]) =>
-            this.refs[key].getRefs().errorRef.setProps({ error: value })
-          );
+        if (Object.keys(errors).length === 0) {
+          const newData = {
+            login: refs.login.value,
+            first_name: refs.firstName.value,
+            second_name: refs.secondName.value,
+            display_name: refs.displayName.value,
+            phone: refs.phone.value,
+            email: refs.email.value,
+          };
 
-          return;
+          this.props.store.dispatch(changeUserProfile, newData);
         }
-
-        Object.values(this.refs).forEach(value => {
-          value.getRefs().errorRef.setProps({ error: '' });
-        });
-
-        const newData = Object.entries(refs).reduce((acc, [key, input]) => {
-          acc[key] = input.value;
-          return acc;
-        }, {} as { [key: string]: string });
-
-        console.log(newData);
       },
     });
   }
@@ -72,7 +62,7 @@ export default class ChangeProfile extends Block<ChangeProfileProps, ChangeUserP
     return `
         <main class='main'>
             <div class='profile'>
-                {{{ReturnButton class="arrow" onClick=onClick}}}
+                {{{ReturnButton}}}
 
                 <section class='profile__container'>
                     <form class='user' action="/">
@@ -97,3 +87,5 @@ export default class ChangeProfile extends Block<ChangeProfileProps, ChangeUserP
     `;
   }
 }
+
+export default WithStore(WithRouter(WithUser(ChangeProfile)));

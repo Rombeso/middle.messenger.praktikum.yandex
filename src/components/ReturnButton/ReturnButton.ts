@@ -1,35 +1,42 @@
 import Block from 'core/Block';
 import './ReturnButton.scss';
+import Router from 'core/Router';
+import { WithRouter } from 'components/Hocs/WithRouter';
 
 interface IncomingReturnButtonProps {
-  path: string;
-  class?: string;
-  onClick?: () => void;
+  router: Router;
+  navigateBack: () => void;
 }
 
-interface ReturnButtonProps {
-  path: string;
-  class?: string;
+type ReturnButtonProps = IncomingReturnButtonProps & {
   events: {
     click?: () => void;
   };
-}
+};
 
-export default class ReturnButtonButton extends Block<ReturnButtonProps> {
+class ReturnButtonButton extends Block<ReturnButtonProps> {
   static componentName: string = 'ReturnButton';
 
-  constructor({ path, class: string = 'backBlock__link', onClick }: IncomingReturnButtonProps) {
-    super({ path, class: string, events: { click: onClick } });
+  constructor(props: IncomingReturnButtonProps) {
+    super({
+      ...props,
+      events: {
+        click: () => {
+          this.props.router.back();
+        },
+      },
+    });
   }
 
   render() {
     // language=hbs
     return `
-
 <div class='backBlock'>
-<button  class='{{class}}' onClick={{onClick}}>
+<button  class='backBlock'>
   </button>
   </div>
       `;
   }
 }
+
+export default WithRouter(ReturnButtonButton);

@@ -1,14 +1,42 @@
 import Block from 'core/Block';
-import { ProfileProps } from 'pages/profile/profile';
+import Router from 'core/Router';
+import { signout } from 'services/authorization';
+import { Store } from 'store/store';
+import { getUserDataArray } from 'utils/getUserDataArray';
+import { WithRouter } from 'components/Hocs/WithRouter';
+import { WithStore } from 'components/Hocs/WithStore';
+import { stringToCamelCase } from 'helpers/stringToCamelCase';
 import './User.scss';
 // @ts-ignore
 import avatar from '../../assets/default-avatar.png';
 
-export default class User extends Block<Partial<ProfileProps>> {
+export type UserProps = {
+  router: Router;
+  store: Store<AppState>;
+  user: Nullable<UserType>;
+  userData: Array<any>;
+  navigateTo: (event: PointerEvent) => void;
+  signout: () => void;
+};
+
+class User extends Block<UserProps> {
   static componentName: string = 'User';
 
-  constructor({ profileData }: ProfileProps) {
-    super({ profileData });
+  userData: any;
+
+  constructor(props: UserProps) {
+    super(props);
+
+    const data = props.user ? getUserDataArray(props.user) : [];
+
+    this.setProps({
+      userData: data,
+      navigateTo: (event: PointerEvent) => {
+        const path = (event.target as HTMLButtonElement).textContent || '';
+        this.props.router.go(`/${stringToCamelCase(path)}`);
+      },
+      signout: () => this.props.store.dispatch(signout),
+    });
   }
 
   render() {
@@ -27,13 +55,13 @@ export default class User extends Block<Partial<ProfileProps>> {
 
     <div class='user__actions'>
         <div class='actionItem'>
-            {{{Link class='actionItem__title' path='./changeUserData' text='Change user data'}}}
+            {{{Button class='action-item__title' title='Change user data' onClick=navigateTo}}}
         </div>
         <div class='actionItem'>
-            {{{Link class='actionItem__title' path='./changeUserData' text='Change password'}}}
+            {{{Button class='action-item__title' title='Change password' onClick=navigateTo}}}
         </div>
         <div class='actionItem'>
-            {{{Link class='actionItem__title actionItem__title_warning' path='/' text='Log out'}}}
+            {{{Button class='action-item__title action-item__title_warning' title='Log out' onClick=signout}}}
         </div>
     </div>
 </div>
@@ -41,3 +69,5 @@ export default class User extends Block<Partial<ProfileProps>> {
               `;
   }
 }
+
+export default WithStore(WithRouter(User));

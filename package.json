@@ -19,7 +19,8 @@
     "helpers": "./src/helpers",
     "data": "./src/data",
     "styles": "./src/styles",
-    "services": "./src/services"
+    "services": "./src/services",
+    "api": "./src/api"
   },
   "keywords": [],
   "author": "Roman Larionov",

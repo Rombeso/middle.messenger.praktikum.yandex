@@ -1,3 +1,4 @@
+import { PartialRouteProps } from 'services/routes';
 import Route, { RouteProps } from './Route';
 
 interface RouterProps {
@@ -19,7 +20,7 @@ export default class Router implements RouterProps {
     Router.__instance = this;
   }
 
-  use(props: RouteProps, callback: () => void) {
+  use(props: PartialRouteProps, callback: () => void) {
     const route = new Route({ ...props, callback });
 
     this.routes.push(route);
@@ -36,9 +37,11 @@ export default class Router implements RouterProps {
   }
 
   private _onRouteChange(pathname: string = window.location.pathname) {
+    console.log(pathname);
     const route = this.getRoute(pathname);
 
     if (!route) {
+      console.log('no route');
       return;
     }
 

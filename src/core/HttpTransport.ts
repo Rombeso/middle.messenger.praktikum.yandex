@@ -1,3 +1,5 @@
+import { PATH } from 'data/pathsApi';
+
 import queryStringify from 'helpers/queryStringify';
 
 enum METHODS {
@@ -17,19 +19,19 @@ export default class HTTPTransport {
   get = (url: string, queryParams?: Record<string, string>) => {
     const urlWithParams = queryParams ? url + queryStringify(queryParams) : url;
 
-    return this.request(urlWithParams, METHODS.GET);
+    return this.request(PATH.BASE + urlWithParams, METHODS.GET);
   };
 
   post = (url: string, options?: Options) => {
-    return this.request(url, METHODS.POST, options?.data);
+    return this.request(PATH.BASE + url, METHODS.POST, options?.data);
   };
 
   put = (url: string, options: Options) => {
-    return this.request(url, METHODS.PUT, options.data);
+    return this.request(PATH.BASE + url, METHODS.PUT, options.data);
   };
 
   delete = (url: string) => {
-    return this.request(url, METHODS.DELETE);
+    return this.request(PATH.BASE + url, METHODS.DELETE);
   };
 
   request = <T extends any>(
